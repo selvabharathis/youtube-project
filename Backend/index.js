@@ -17,3 +17,7 @@ app.get("/login", (req, res) => {
 app.get("/signup", (req, res) => {
   res.send("you have hit the signup page");
 });
+
+app.get("/signin", (req, res) => {
+  res.send("you have hit the signin page");
+});
