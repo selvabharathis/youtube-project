@@ -13,3 +13,7 @@ app.listen(port, () => {
 app.get("/login", (req, res) => {
   res.send("you have hit the login page");
 });
+
+app.get("/signup", (req, res) => {
+  res.send("you have hit the signup page");
+});
