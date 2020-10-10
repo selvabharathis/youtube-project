@@ -1,23 +1,20 @@
 const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// connect to mongo db
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("db connected succesfully");
+  });
 
+// starting server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-});
-
-app.get("/login", (req, res) => {
-  res.send("you have hit the login page");
-});
-
-app.get("/signup", (req, res) => {
-  res.send("you have hit the signup page");
-});
-
-app.get("/signin", (req, res) => {
-  res.send("you have hit the signin page");
 });
