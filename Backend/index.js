@@ -14,6 +14,11 @@ mongoose
     console.log("db connected succesfully");
   });
 
+  //middlewares
+  app.use(bodyParser.json())
+  app.use(cookieParser())
+  app.use(cors())
+
 // starting server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
