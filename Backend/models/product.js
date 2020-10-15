@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-const { Schema } = mangoose;
+var mongoose = require('mongoose')
+const { Schema } = mongoose;
 
 const productSchema = new Schema({
   name: {

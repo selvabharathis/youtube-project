@@ -1,7 +1,16 @@
-const express = require("express");
-const mongoose = require("mongoose");
+// importing libraries
 require("dotenv").config();
+const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
+const cors = require("cors")
+
+// importing route files
+const auth = require("./routes/auth")
+
+//port for express server
 const port = 3000;
 
 // connect to mongo db
@@ -14,12 +23,15 @@ mongoose
     console.log("db connected succesfully");
   });
 
-  //middlewares
-  app.use(bodyParser.json())
-  app.use(cookieParser())
-  app.use(cors())
+//middlewares - predefined
+app.use(bodyParser.json())
+app.use(cookieParser())
+app.use(cors())
 
-// starting server
+//middleware for routes (Router)
+app.use("/pots",auth)
+
+// starting express server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
