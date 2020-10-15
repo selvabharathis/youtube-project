@@ -5,6 +5,12 @@ var User = require("../models/user")
 const { validationResult } = require('express-validator');
 
 exports.signup = (req,res) => {
+
+    // validating user
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     // create a new user when he signup using form from front end
     // mongoose act as ODM(object data modeling) between node js and mongodb
     // schema defines the structure of document to be created in mongodb collection
@@ -28,6 +34,12 @@ exports.signup = (req,res) => {
 }
 
 exports.signin = (req,res) => {
+
+    // validation of email and pass
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     // get password and email from front end form
      const {password,email} = req.body
 
