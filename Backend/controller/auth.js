@@ -59,7 +59,7 @@ exports.signin = (req,res) => {
          }
 
          // generating token
-         const token = jwt.sign({id : user._id }, process.env.SECRET,{ algorithm: 'RS256'});
+         const token = jwt.sign({id : user._id }, process.env.SECRET);
 
          //puting token into user browser via cookie parser
          res.cookie("COOKIE",token,{ expire : new Date() + 99999 })
@@ -92,7 +92,6 @@ exports.signout = (req,res) => {
 exports.isSignedIn = expressJwt({ 
     secret: process.env.SECRET, 
     userProperty: 'auth',
-    algorithms: ['RS256']
 });
 
 //custom middleware
